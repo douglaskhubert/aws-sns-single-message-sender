@@ -1,0 +1,9 @@
+version: "3.0"
+services:
+  dispatcher:
+    build:
+      context: .
+    env_file:
+      - env
+    volumes:
+      - ./message:/message
