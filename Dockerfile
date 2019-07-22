@@ -14,5 +14,4 @@ COPY build/setup.sh /usr/local/bin/setup.sh
 COPY message /message
 RUN chmod +x /usr/local/bin/setup.sh
 
-#ENTRYPOINT sh
-ENTRYPOINT [ "/bin/sh", "-c", "setup.sh && aws sns publish --topic-arn ${AWS_TOPIC_ARN} --message file://message" ]
+ENTRYPOINT [ "/bin/sh", "-c", ". setup.sh && aws sns publish --topic-arn ${AWS_TOPIC_ARN} --message \"${MESSAGE}\"" ]
